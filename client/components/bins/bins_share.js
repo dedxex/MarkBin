@@ -12,7 +12,7 @@ class BinsShare extends Component {
                     <div className="input-group-btn">
                         <button 
                             onClick={onShareClick}
-                            className="btn btn-default">
+                            className="btn btn-primary">
                             ShareBin
                         </button>
                     </div>

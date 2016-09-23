@@ -7,8 +7,10 @@ class BinsList extends Component {
         Meteor.call('bins.remove',bin);
     }
     renderList() {
+       
         return this.props.bins.map(bin => {
             const url = `/bins/${bin._id}`;
+            
             return (
                 <li className="list-group-item" key={bin._id}>
                 <Link to={url}>{bin._id}</Link>
@@ -22,6 +24,7 @@ class BinsList extends Component {
         });
     }
     render() {
+         
         return( 
             <div className="container">
                 <ul className="list-group">

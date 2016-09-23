@@ -10,14 +10,18 @@ class Header extends Component {
     }
     render() {
         return (
-            <nav className="nav navbar-default">
+            <nav className="navbar navbar-dark bg-primary">
                 <div className="navbar-header">
                   <Link to="/" className="navbar-brand">markBin</Link>
                 </div>
-                <ul className="nav navbar-nav">
-                    <li><Accounts></Accounts></li>
-                    <li><a onClick={this.onBinClick.bind(this)} href="#">New Bin</a></li>
-                </ul>
+                <div className="navbar-header">
+                    <a className="navbar-brand" onClick={this.onBinClick.bind(this)} href="#">New Bin</a>
+                </div>
+                <div className="navbar-header pull-right">
+                        <div className="navbar-brand">
+                            <Accounts></Accounts>
+                        </div>
+                </div>
             </nav>
         );
     }
