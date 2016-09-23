@@ -1,0 +1,37 @@
+import React,{ Component } from 'react';
+import { createContainer } from 'meteor/react-meteor-data';
+import { Bins } from '../../../imports/collections/bin';
+import { Link } from 'react-router';
+class BinsList extends Component {
+    onBinRemove(bin) {
+        Meteor.call('bins.remove',bin);
+    }
+    renderList() {
+        return this.props.bins.map(bin => {
+            const url = `/bins/${bin._id}`;
+            return (
+                <li className="list-group-item" key={bin._id}>
+                <Link to={url}>{bin._id}</Link>
+                    <span className="pull-right">
+                        <i className="glyphicon glyphicon-remove"
+                            onClick={()=>this.onBinRemove(bin)}>
+                        </i>
+                    </span>
+                </li>
+                );
+        });
+    }
+    render() {
+        return( 
+            <div className="container">
+                <ul className="list-group">
+                    {this.renderList()}
+                </ul>
+            </div>
+        );
+    }
+}
+export default createContainer( () => {
+    Meteor.subscribe('binPublication');
+    return { bins : Bins.find({}).fetch() };
+},BinsList);
